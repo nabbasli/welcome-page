@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+        #name-input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="welcome-message">Welcome!</h1>
+    <input type="text" id="name-input" placeholder="Enter your name">
+    <button onclick="setName()">Submit</button>
+
+    <script>
+        function setName() {
+            const nameInput = document.getElementById('name-input').value;
+            const welcomeMessage = document.getElementById('welcome-message');
+
+            if (nameInput) {
+                welcomeMessage.textContent = `Welcome on board, ${nameInput}!`;
+                localStorage.setItem('userName', nameInput);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedName = localStorage.getItem('userName');
+            if (savedName) {
+                document.getElementById('welcome-message').textContent = `Welcome on board, ${savedName}!`;
+            }
+        });
+    </script>
+</body>
+</htm
